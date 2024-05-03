@@ -5,7 +5,7 @@ import SKU from '@tf2autobot/tf2-sku';
 import * as timersPromises from 'timers/promises';
 import Bot from '../../Bot';
 import CommandParser from '../../CommandParser';
-import { stats, profit, itemStats, testPriceKey } from '../../../lib/tools/export';
+import { stats, profit, itemStats, testPriceKey, detailedStats } from '../../../lib/tools/export';
 import { sendStats } from '../../DiscordWebhook/export';
 import loadPollData, { deletePollData } from '../../../lib/tools/polldata';
 import SteamTradeOfferManager from '@tf2autobot/tradeoffer-manager';
@@ -405,6 +405,10 @@ export default class StatusCommands {
                 this.bot.sendMessage(steamID, adminOnlyMessage);
             }
         } else this.bot.sendMessage(steamID, reply);
+    }
+
+    detailedStatsCommand(steamID: SteamID): void {
+        this.bot.sendMessage(steamID, 'test');
     }
 
     versionCommand(steamID: SteamID): void {

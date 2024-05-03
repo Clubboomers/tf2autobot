@@ -247,6 +247,9 @@ export default class Commands {
                 this.status.statsDWCommand(steamID);
             } else if (command === 'itemstats' && (isAdmin || isWhitelisted)) {
                 void this.status.itemStatsCommand(steamID, message);
+            } else if (command === 'detailedstats' && isAdmin) {
+                // fix
+                void this.status.detailedStatsCommand(steamID);
             } else if (command == 'wipestats' && isAdmin) {
                 this.status.statsWipeCommand(steamID, message);
             } else if (command === 'inventory' && isAdmin) {
