@@ -115,7 +115,7 @@ export default async function profit(bot: Bot, pollData: SteamTradeOfferManager.
                     if (Object.prototype.hasOwnProperty.call(trade.dict.their, sku)) {
                         const itemCount =
                             typeof trade.dict.their[sku] === 'object'
-                                ? (trade.dict.their[sku]['amount'] as number) // pollData v2.2.0 until v.2.3.5
+                                ? (trade.dict.their[sku]!['amount'] as number) // pollData v2.2.0 until v.2.3.5
                                 : trade.dict.their[sku]; // pollData before v2.2.0 and/or v3.0.0 or later
 
                         if (
@@ -160,7 +160,7 @@ export default async function profit(bot: Bot, pollData: SteamTradeOfferManager.
                     if (Object.prototype.hasOwnProperty.call(trade.dict.our, sku)) {
                         const itemCount =
                             typeof trade.dict.our[sku] === 'object'
-                                ? (trade.dict.our[sku]['amount'] as number) // pollData v2.2.0 until v.2.3.5
+                                ? (trade.dict.our[sku]!['amount'] as number) // pollData v2.2.0 until v.2.3.5
                                 : trade.dict.our[sku]; // pollData before v2.2.0 and/or v3.0.0 or later
 
                         if (

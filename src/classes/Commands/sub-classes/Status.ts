@@ -407,8 +407,20 @@ export default class StatusCommands {
         } else this.bot.sendMessage(steamID, reply);
     }
 
-    detailedStatsCommand(steamID: SteamID): void {
-        this.bot.sendMessage(steamID, 'test');
+    async detailedStatsCommand(steamID: SteamID): Promise<void> {
+        try {
+            const items = await detailedStats(this.bot);
+
+            const keys = Object.keys(items);
+            if (keys.length === 0) {
+                return this.bot.sendMessage(steamID, '❌ No detailed stats available.');
+            }
+
+            this.bot.sendMessage(steamID, '📊 Detailed stats:\n');
+            this.bot.sendMessage(steamID, `${items[keys.at(0)]}`);
+        } catch (err) {
+            this.bot.sendMessage(steamID, `❌ Failed to get detailed stats: ${err as string}`);
+        }
     }
 
     versionCommand(steamID: SteamID): void {
